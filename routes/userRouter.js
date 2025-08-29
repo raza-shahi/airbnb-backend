@@ -1,12 +1,12 @@
+// Core module
+const path = require('path');
+// External module
 const express = require('express');
-
+// Local module
 const userRouter = express.Router();
 
 userRouter.get("/",(req,res,next)=>{
-  res.send(`
-    <h1>Welcome to aribnb home page </h1>
-    <a href="/host/add-home">Add home</a>
-    `);
+  res.sendFile(path.join(__dirname,'../','views','home.html'));
 });
 
 module.exports = userRouter;
