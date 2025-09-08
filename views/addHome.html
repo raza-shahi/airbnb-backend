@@ -6,14 +6,33 @@
   <title>Document</title>
   <link href="/output.css" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <h1 class="bg-teal-800">Register your home</h1>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white shadow-sm">
+    <h1 class="max-w-4xl mx-auto py-6 px-4 text-3xl font-bold text-gray-900">Register your home</h1>
   </header>
-  <main>
-    <form action="/host/add-home" method="POST">
-      <input type="text" placeholder="Enter your name" name="housename">
-      <input type="submit"/>
+  <main class="max-w-4xl mx-auto py-8 px-4">
+    <form action="/host/add-home" method="POST"
+    class="bg-white shadow-md rounded-lg p-8 space-y-6">
+      <div class="space-y-2">
+                <label for="housename" 
+                       class="block text-sm font-medium text-gray-700">
+                    House Name
+                </label>
+                <input type="text" 
+                       id="housename"
+                       name="housename" 
+                       placeholder="Enter your house name" 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md 
+                              focus:ring-2 focus:ring-teal-500 focus:border-teal-500
+                              placeholder:text-gray-400"
+                       required>
+            </div>
+             <button type="submit"
+                    class="w-full bg-teal-600 text-white py-2 px-4 rounded-md
+                           hover:bg-teal-700 transition-colors duration-200
+                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                Register Home
+            </button>
     </form>
   </main>
 </body>
