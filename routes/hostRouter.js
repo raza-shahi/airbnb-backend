@@ -8,12 +8,17 @@ const rootDir = require('../utils/pathUtils');
 const hostRouter = express.Router();
 
 hostRouter.get("/host/add-home",(req,res,next)=>{  
-  res.sendFile(path.join(rootDir,'views','addHome.html'));
+  res.render('addHome.ejs',{pageTitle: 'Add Home'});
 });
+
+const registeredHouses = [];
 
 hostRouter.post("/host/add-home",(req,res,next)=>{
-  console.log(req.body);
-  res.sendFile(path.join(rootDir,'views','homeAdded.html'));
+  console.log("Home register for ",req.body.housename);
+  registeredHouses.push({houseName: req.body.housename})
+
+  res.render('homeAdded.ejs',{pageTitle: 'Home Added Successfully'});
 });
 
-module.exports = hostRouter;
+exports.hostRouter = hostRouter;
+exports.registeredHouses = registeredHouses;
