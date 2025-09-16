@@ -14,8 +14,8 @@ hostRouter.get("/host/add-home",(req,res,next)=>{
 const registeredHouses = [];
 
 hostRouter.post("/host/add-home",(req,res,next)=>{
-  console.log("Home register for ",req.body.housename);
-  registeredHouses.push({houseName: req.body.housename})
+  // console.log("Home register for ",req.body);
+  registeredHouses.push(req.body)
 
   res.render('homeAdded.ejs',{pageTitle: 'Home Added Successfully'});
 });

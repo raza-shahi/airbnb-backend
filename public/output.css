@@ -617,6 +617,10 @@ video {
   margin-top: 4rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
 }
@@ -639,6 +643,10 @@ video {
 
 .h-16 {
   height: 4rem;
+}
+
+.h-48 {
+  height: 12rem;
 }
 
 .h-6 {
@@ -776,6 +784,11 @@ video {
 
 .bg-no-repeat {
   background-repeat: no-repeat;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-4 {
