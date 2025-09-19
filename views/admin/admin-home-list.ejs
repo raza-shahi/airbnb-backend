@@ -1,0 +1,63 @@
+<%- include('../partials/head') %>
+</head>
+<body class="min-h-screen bg-[url('/flat.jpg')] bg-cover bg-center bg-no-repeat">
+   <%- include('../partials/nav') %>
+
+    <main class="container mx-auto flex flex-col items-center justify-center mt-16 px-4">
+        <div class="bg-white/80 backdrop-blur p-8 rounded-xl shadow-xl max-w-4xl w-full">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                Hi Admin, here are the registered homes!
+            </h2>
+            
+            <div class="mt-8">
+                <% if(registeredHouses && registeredHouses.length > 0) { %>
+                    <table class="min-w-full">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-4 py-2 text-left">Image</th>
+                                <th class="px-4 py-2 text-left">House Name</th>
+                                <th class="px-4 py-2 text-left">Price/Night</th>
+                                <th class="px-4 py-2 text-left">Location</th>
+                                <th class="px-4 py-2 text-left">Ratings</th>
+                                <th class="px-4 py-2 text-left">Edit</th>
+                                <th class="px-4 py-2 text-left">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% registeredHouses.forEach(home => { %>
+                            <% if(home && home.housename) { %>
+                              <tr class="border-b hover:bg-gray-50">
+                                <td class="px-4 py-2">
+                                  <img src="<%= home.image %>" 
+                                     alt="Image of <%= home.housename %>" 
+                                     class="w-20 h-20 object-cover rounded">
+                                </td>
+                                <td class="px-4 py-2"><%= home.housename %></td>
+                                <td class="px-4 py-2">₹<%= home.pricePernight %></td>
+                                <td class="px-4 py-2"><%= home.location %></td>
+                                <td class="px-4 py-2"><%= home.ratings %>/5</td>
+                                <td class="px-4 py-2">
+                                  <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">
+                                    Edit
+                                  </button>
+                                </td>
+                                <td class="px-4 py-2">
+                                  <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                                    Delete
+                                  </button>
+                                </td>
+                              </tr>
+                            <% } %>
+                          <% }) %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <div class="text-center p-4 bg-gray-50 rounded">
+                        No homes registered yet.
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
