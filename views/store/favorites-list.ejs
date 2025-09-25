@@ -1,0 +1,67 @@
+<%- include('../partials/head') %>
+</head>
+<body class="min-h-screen bg-[url('/flat.jpg')] bg-cover bg-center bg-no-repeat">
+   <%- include('../partials/nav') %>
+        <section class="container mx-auto mt-8 px-4">
+        <h2 class="text-2xl text-gray-100 font-semibold mb-4">Favorite Homes</h2>
+        
+    
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <% if(favoriteHomes && favoriteHomes.length > 0) { %>
+                <% favoriteHomes.forEach(home => { %>
+                    <li class="bg-white/80 backdrop-blur p-4 rounded-lg shadow">
+                        <% if(home && home.housename) { %>
+                            <div class="space-y-3">
+                                <h3 class="text-xl font-semibold text-gray-800">
+                                    <%= home.housename %>
+                                </h3>
+                                <p class="text-rose-600 font-medium">₹<%= home.pricePernight %> per night</p>
+                                <p class="text-gray-600">Location: <%= home.location %></p>
+                                <p class="text-gray-600">Ratings: <%= home.ratings %> / 5</p>
+                                <img src="<%= home.image %>" 
+                                     alt="Image of <%= home.housename %>" 
+                                     class="w-full h-48 object-cover rounded-lg shadow">
+                                <div class="flex gap-3 mt-4">
+                                    <button class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-all duration-300 shadow-md flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        Book Now
+                                    </button>
+                                    <!-- Replace the remove button with this form -->
+                                    <form action="/store/remove-from-favorites" method="POST" class="inline">
+                                        <input type="hidden" name="homeId" value="<%= home.id %>">
+                                        <button type="submit" 
+                                                class="border-2 border-rose-500 text-rose-500 px-4 py-2 rounded-lg hover:bg-rose-500 hover:text-white transition-all duration-300 shadow-md flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                            Remove from Favorites
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% } else { %>
+                            <span class="text-red-500">Invalid home data</span>
+                        <% } %>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <li class="col-span-full flex flex-col items-center justify-center p-8 bg-white/80 backdrop-blur rounded-lg shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">No Favorites Yet</h3>
+                    <p class="text-gray-500">Start exploring and add homes to your favorites list!</p>
+                    <a href="/" class="mt-4 inline-flex items-center px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        Explore Homes
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </section>
+</body>
+</html>

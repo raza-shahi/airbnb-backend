@@ -1,0 +1,56 @@
+<%- include('../partials/head') %>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen">
+    <%- include('../partials/nav') %>
+      <header class="bg-white shadow-sm">
+        <h1 class="max-w-4xl mx-auto py-6 px-4 text-3xl font-bold text-gray-900">
+          <%= editing ? 'Edit' : 'Register' %> your home
+        </h1>
+      </header>
+      <main class="max-w-4xl mx-auto py-8 px-4">
+        <form action="/host/<%= editing ? "edit-home" : "add-home"%>" method="POST" class="bg-white shadow-md rounded-lg p-8 space-y-6">
+          <div class="space-y-2">
+              <input type="hidden" name="id" value="<%= editing && home ? home.id : '' %>">
+            <label for="housename" class="block text-sm font-medium text-gray-700">
+              House Name
+            </label>
+            <input type="text" id="housename" name="housename" value="<%= editing && home ? home.housename : '' %>" placeholder="Enter your house name" class="w-full px-4 py-2 border border-gray-300 rounded-md 
+                              focus:ring-2 focus:ring-teal-500 focus:border-teal-500
+                              placeholder:text-gray-400" required>
+            <label for="pricePernight" class="block text-sm font-medium text-gray-700">
+              Price per Night
+            </label>
+            <input type="number" id="pricePernight" name="pricePernight" value="<%= editing && home ? home.pricePernight : '' %>" placeholder="Enter the price per night" class="w-full px-4 py-2 border border-gray-300 rounded-md 
+                              focus:ring-2 focus:ring-teal-500 focus:border-teal-500
+                              placeholder:text-gray-400" required>
+            <label for="location" class="block text-sm font-medium text-gray-700">
+              Location
+            </label>
+            <input type="text" id="location" name="location" value="<%= editing && home ? home.location : '' %>" placeholder="Enter the location" class="w-full px-4 py-2 border border-gray-300 rounded-md 
+                              focus:ring-2 focus:ring-teal-500 focus:border-teal-500
+                              placeholder:text-gray-400" required>
+            <label for="ratings" class="block text-sm font-medium text-gray-700">
+              Ratings
+            </label>
+            <input type="number" step="0.1" id="ratings" name="ratings" value="<%= editing && home ? home.ratings : '' %>" placeholder="Enter the ratings (e.g., 4.5)"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md 
+                              focus:ring-2 focus:ring-teal-500 focus:border-teal-500
+                              placeholder:text-gray-400" required>
+            <label for="image" class="block text-sm font-medium text-gray-700">
+              Image URL
+            </label>
+            <input type="text" id="image" name="image" value="<%= editing && home ? home.image : '' %>" placeholder="Enter the image URL" class="w-full px-4 py-2 border border-gray-300 rounded-md 
+                              focus:ring-2 focus:ring-teal-500 focus:border-teal-500
+                              placeholder:text-gray-400" required>
+          </div>
+          <button type="submit" class="w-full bg-teal-600 text-white py-2 px-4 rounded-md
+                           hover:bg-teal-700 transition-colors duration-200
+                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+            <%= editing ? 'Update Home' : 'Register Home' %>
+          </button>
+        </form>
+      </main>
+  </body>
+
+  </html>

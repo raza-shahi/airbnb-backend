@@ -34,10 +34,26 @@
                 <% registeredHouses.forEach(home => { %>
                     <li class="bg-white/80 backdrop-blur p-4 rounded-lg shadow">
                         <% if(home && home.housename) { %>
-                            <%= home.housename %> - ₹<%= home.pricePernight %> per night
-                            <p>Location: <%= home.location %></p>
-                            <p>Ratings: <%= home.ratings %> / 5</p>
-                            <img src="<%= home.image %>" alt="Image of <%= home.housename %>" class="mt-2 w-full h-48 object-cover rounded">
+                            <div class="space-y-3">
+                                <h3 class="text-xl font-semibold text-gray-800">
+                                    <%= home.housename %>
+                                </h3>
+                                <p class="text-rose-600 font-medium">₹<%= home.pricePernight %> per night</p>
+                                <p class="text-gray-600">Location: <%= home.location %></p>
+                                <p class="text-gray-600">Ratings: <%= home.ratings %> / 5</p>
+                                <img src="<%= home.image %>" 
+                                     alt="Image of <%= home.housename %>" 
+                                     class="w-full h-48 object-cover rounded-lg shadow">
+                                <div class="flex gap-3 mt-4">
+                                    <a href="/homes/<%= home.id %>" 
+                                       class="bg-rose-500 text-white px-4 py-2 rounded-lg hover:bg-rose-600 transition-all duration-300 shadow-md">
+                                        View Details
+                                    </a>
+                                    <button class="bg-rose-500 text-white px-4 py-2 rounded-lg hover:bg-rose-600 transition-all duration-300 shadow-md">
+                                        Book Now
+                                    </button>
+                                </div>
+                            </div>
                         <% } else { %>
                             <span class="text-red-500">Invalid home data</span>
                         <% } %>

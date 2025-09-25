@@ -37,14 +37,16 @@
                                 <td class="px-4 py-2"><%= home.location %></td>
                                 <td class="px-4 py-2"><%= home.ratings %>/5</td>
                                 <td class="px-4 py-2">
-                                  <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">
+                                  <a href="/host/edit-home/<%= home.id %>?editing=true" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">
                                     Edit
-                                  </button>
+                                  </a>
                                 </td>
                                 <td class="px-4 py-2">
-                                  <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
-                                    Delete
-                                  </button>
+                                  <form action="/host/delete-home/<%= home.id %>" method="POST" class="inline">
+                                    <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                                      Delete
+                                    </button>
+                                  </form>
                                 </td>
                               </tr>
                             <% } %>
